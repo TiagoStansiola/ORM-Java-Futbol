@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Lista de Jugadores</title>
+<link
+	href="data:image/x-icon;base64,AAABAAEAEBAQAAAAAAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAKX0aAP///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABEhERESEQAAESERERIRAAARIREREhEAABEiIiIiEQAAERERERERAAARERIhEREAABERIRIREQAAIiIiIiIiAAARESESEREAABEREiEREQAAERERERERAAAREREREREAABEiIiIiEQAAESERERIRAAARIREREhEAABEhERESEQDAAwAAwAMAAMADAADAAwAAwAMAAMADAADAAwAAwAMAAMADAADAAwAAwAMAAMADAADAAwAAwAMAAMADAADAAwAA"
+	rel="icon" type="image/x-icon" />
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+	crossorigin="anonymous">
+</head>
+<body>
+
+	<ul class="nav nav-tabs">
+		<li class="nav-item"><a class="nav-link " href="/">Lista de
+				Jugadores</a></li>
+		<li class="nav-item"><a class="nav-link " href="/players/new">Nuevo
+				Jugador</a></li>
+		<li class="nav-item"><a class="nav-link " href="/players/newteam">Nuevo
+				Equipo</a></li>
+
+	</ul>
+
+
+
+	<div class="container">
+		<h2 class="text-center">Lista de Jugadores</h2>
+
+	
+		
+
+
+		<table class="table table-striped table-bordered">
+
+			<thead class="table-dark">
+
+				<tr>
+
+					<th scope="col">Nombre</th>
+					<th scope="col">Apellido</th>
+					<th scope="col">Edad</th>
+					<th scope="col">Altura</th>
+					<th scope="col">Peso</th>
+					<th scope="col">Posicion</th>
+					<th scope="col">Liga</th>
+					<th scope="col">Equipo</th>
+					<th scope="col">Pais</th>
+					<th scope="col">acciones</th>
+
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="player : ${players}">
+
+					<td th:text=${player.nombre}></td>
+					<td th:text=${player.apellido}></td>
+					<td th:text=${player.edad}></td>
+					<td th:text=${player.altura}></td>
+					<td th:text=${player.peso}></td>
+					<td th:text="${player.posicion}"></td>
+					<td th:text="${player.liga}"></td>
+					<td th:text="${player.equipo}"></td>
+					<td th:text="${player.pais}"></td>
+					<td><a th:href="@{/players/edit/{id}(id=${player.id})}"
+						class="btn btn-primary">Editar</a> <a
+						th:href="@{/players/{id}(id=${player.id})}" class="btn btn-danger">Eliminar</a></td>
+
+
+				</tr>
+
+			</tbody>
+		</table>
+
+	</div>
+	
+	<script type="text/javascript">
+	function limpiarCampo(){
+		window.location='/';
+		
+	}
+	
+	</script>
+
+</body>
+</html>
